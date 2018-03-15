@@ -27,6 +27,7 @@ namespace MyShop.WebUI.Controllers
         public ActionResult Index()
         {
             List<Product> products = context.Collection().ToList();
+             
             return View(products);
         }
 

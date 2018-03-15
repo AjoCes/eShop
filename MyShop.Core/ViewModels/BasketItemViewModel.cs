@@ -12,6 +12,7 @@ namespace MyShop.Core.ViewModels
         public int Quanity { get; set; }
         public string ProductName { get; set; }
         public decimal Price { get; set; }
+        public string Offer { get; set; }
         public string Image { get; set; }
     }
 }

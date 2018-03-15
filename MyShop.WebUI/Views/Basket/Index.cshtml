@@ -19,7 +19,11 @@
             @Html.DisplayNameFor(model => model.Price)
         </th>
         <th>
-            Line Total
+            Price x Items
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.Offer)
         </th>
         <th></th>
     </tr>
@@ -41,10 +45,9 @@
             @String.Format("{0:c}", item.Price * item.Quanity)
         </td>
         <td>
-            <select>
-                <option value="volvo">Premium Customer</option>
-            </select>
+            @Html.DisplayFor(modelItem => item.Offer)
         </td>
+
         <td>
             <a href="@Url.Action("RemoveFromBasket", "Basket", new { Id=item.Id })" class="btn btn-danger">Delete</a>
         </td>

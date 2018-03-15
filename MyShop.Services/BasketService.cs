@@ -111,7 +111,8 @@ namespace MyShop.Services
                                    Quanity = b.Quanity,
                                    ProductName = p.Name,
                                    Image = p.Image,
-                                   Price = p.Price
+                                   Price = p.Price,
+                                   Offer = p.Offer
                                }
                               ).ToList();
 
@@ -132,7 +133,7 @@ namespace MyShop.Services
 
                 decimal? basketTotal = (from item in basket.BasketItems
                                         join p in productContext.Collection() on item.ProductId equals p.Id
-                                        select item.Quanity * p.Price).Sum();
+                                        select item.Quanity * p.Price).Sum(); //here we can choose to calculate the discount
 
                 model.BasketCount = basketCount ?? 0;
                 model.BasketTotal = basketTotal ?? decimal.Zero;
