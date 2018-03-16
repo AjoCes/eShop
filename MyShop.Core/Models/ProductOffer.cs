@@ -6,8 +6,11 @@ using System.Threading.Tasks;
 
 namespace MyShop.Core.Models
 {
-    public class ProductOffer : BaseEntity     
+    public class ProductOffer : BaseEntity
     {
         public string Offer { get; set; }
+        public BaseDescription Descr { get; set; }
+        
     }
+
 }

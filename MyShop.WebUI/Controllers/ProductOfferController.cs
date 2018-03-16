@@ -28,12 +28,35 @@ namespace MyShop.WebUI.Controllers
         public ActionResult Index()
         {
             List<ProductOffer> productOffers = context.Collection().ToList();
-
+        
             return View(productOffers);
         }
 
+        public ActionResult Details(string id) 
+            // Ne qeet klase duhet me u impleentu polimorfizmi 
+        {
+            ProductOffer OfferDescription = context.Find(id);
 
-        public ActionResult Create()
+            if (OfferDescription == null)
+            {
+
+                return HttpNotFound();
+            }
+            else {
+
+                //qitu duhet me qene me funksionu polimorfizmi
+                OfferDescription.Descr.Description();
+                OfferDescription.Descr.Description(1);
+
+               return View (OfferDescription);
+
+               
+            }
+
+            
+        }
+
+    public ActionResult Create()
         {
 
             ProductOffer productOffer = new ProductOffer();
