@@ -35,7 +35,8 @@ namespace MyShop.WebUI.Controllers
 
         public ActionResult Create()
         {
-
+            //static polymorphism overloading
+            System.Diagnostics.Debug.WriteLine("without parameters");
             ProductOffer productOffer = new ProductOffer();
             return View(productOffer);
 
@@ -44,7 +45,8 @@ namespace MyShop.WebUI.Controllers
         [HttpPost]
         public ActionResult Create(ProductOffer productOffer)
         {
-
+            //static polymorphism overloading
+            System.Diagnostics.Debug.WriteLine("with parameters");
             if (!ModelState.IsValid)
             {
 
@@ -63,7 +65,7 @@ namespace MyShop.WebUI.Controllers
         public ActionResult Edit(string Id)
         {
 
-            ProductOffer productOffer = context.Find(Id);
+            ProductOffer productOffer = context.Find(Id);          
             if (productOffer == null)
             {
 
@@ -80,7 +82,7 @@ namespace MyShop.WebUI.Controllers
         {
 
             //Load the id offer which will be edited 
-            ProductOffer productOfferToEdit = context.Find(Id);
+            ProductOffer productOfferToEdit = context.Find(Id);         
 
             if (productOfferToEdit == null)
             {
