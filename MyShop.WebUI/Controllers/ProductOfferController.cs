@@ -45,6 +45,10 @@ namespace MyShop.WebUI.Controllers
         [HttpPost]
         public ActionResult Create(ProductOffer productOffer)
         {
+            if (string.IsNullOrEmpty(productOffer.Offer))
+            {
+                ModelState.AddModelError("Offer", "Offer field is required");
+            }
             //static polymorphism overloading
             System.Diagnostics.Debug.WriteLine("with parameters");
             if (!ModelState.IsValid)
@@ -80,6 +84,10 @@ namespace MyShop.WebUI.Controllers
         [HttpPost]
         public ActionResult Edit(ProductOffer offer, string Id)
         {
+            if (string.IsNullOrEmpty(offer.Offer))
+            {
+                ModelState.AddModelError("Offer", "Offer field is required");
+            }
 
             //Load the id offer which will be edited 
             ProductOffer productOfferToEdit = context.Find(Id);         

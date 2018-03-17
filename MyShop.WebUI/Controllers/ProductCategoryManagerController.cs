@@ -33,6 +33,10 @@ namespace MyShop.WebUI.Controllers
         [HttpPost]
         public ActionResult Create(ProductCategory productCategory)
         {
+            if (string.IsNullOrEmpty(productCategory.Category)) {
+                ModelState.AddModelError("Category", "Category field is required");
+            }
+
             if (!ModelState.IsValid)
             {
                 return View(productCategory);
@@ -63,6 +67,10 @@ namespace MyShop.WebUI.Controllers
         [HttpPost]
         public ActionResult Edit(ProductCategory product, string Id)
         {
+            if (string.IsNullOrEmpty(product.Category))
+            {
+                ModelState.AddModelError("Category", "Category field is required");
+            }
             ProductCategory productCategoryToEdit = context.Find(Id);
 
             if (productCategoryToEdit == null)
