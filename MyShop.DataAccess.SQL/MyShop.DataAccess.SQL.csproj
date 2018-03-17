@@ -68,6 +68,10 @@
     <Compile Include="Migrations\201803170836335_OfferType.Designer.cs">
       <DependentUpon>201803170836335_OfferType.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201803171804105_EnumForOffer.cs" />
+    <Compile Include="Migrations\201803171804105_EnumForOffer.Designer.cs">
+      <DependentUpon>201803171804105_EnumForOffer.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SQLRepository.cs" />
@@ -97,6 +101,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201803170836335_OfferType.resx">
       <DependentUpon>201803170836335_OfferType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803171804105_EnumForOffer.resx">
+      <DependentUpon>201803171804105_EnumForOffer.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

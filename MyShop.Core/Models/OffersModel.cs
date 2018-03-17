@@ -6,8 +6,14 @@ using System.Threading.Tasks;
 
 namespace MyShop.Core.Models
 {
-    public class ProductOffer : BaseEntity
+    public class OffersModel : BaseEntity
     {
-        public string Offer { get; set; }   
+        public Offers Offers { get; set; }
+    }
+
+    public enum Offers
+    {
+        Offer1,
+        Offer2
     }
 }

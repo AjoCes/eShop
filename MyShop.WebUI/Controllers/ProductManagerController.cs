@@ -16,12 +16,14 @@ namespace MyShop.WebUI.Controllers
         IRepository<Product> context;
         IRepository<ProductCategory> productCategories;
         IOffers<ProductOffer> productOffers;
+        IOffers<OffersModel> offersModel;
 
-        public ProductManagerController(IRepository<Product> productContext, IRepository<ProductCategory> productCategoryContext, IOffers<ProductOffer> productOfferContext) {
+        public ProductManagerController(IRepository<Product> productContext, IRepository<ProductCategory> productCategoryContext, IOffers<ProductOffer> productOfferContext, IOffers<OffersModel> productOffersContext) {
        
             context = productContext;
             productCategories = productCategoryContext;
             productOffers = productOfferContext;
+            offersModel = productOffersContext;
         }
         // GET: ProductManager
         public ActionResult Index()
@@ -37,6 +39,7 @@ namespace MyShop.WebUI.Controllers
             viewModel.Product = new Product();
             viewModel.ProductCategories = productCategories.Collection();
             viewModel.ProductOffers = productOffers.Collection();
+            viewModel.OffersModel = offersModel.Collection();
             return View(viewModel);
         }
 
@@ -72,6 +75,7 @@ namespace MyShop.WebUI.Controllers
                 viewModel.Product = product;
                 viewModel.ProductCategories = productCategories.Collection();
                 viewModel.ProductOffers = productOffers.Collection();
+                viewModel.OffersModel = offersModel.Collection();
 
                 return View(viewModel);
             }
