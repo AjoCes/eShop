@@ -43,6 +43,7 @@ namespace MyShop.WebUI.Controllers
             return View(viewModel);
         }
 
+        //Polimorfizmi
         [HttpPost]
         public ActionResult Create(Product product, HttpPostedFileBase file) {
             if (!ModelState.IsValid)
@@ -80,7 +81,7 @@ namespace MyShop.WebUI.Controllers
                 return View(viewModel);
             }
         }
-
+        //Polimorfizmi
         [HttpPost]
         public ActionResult Edit(Product product, string Id, HttpPostedFileBase file) {
             Product productToEdit = context.Find(Id);

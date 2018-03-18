@@ -6,14 +6,9 @@ using System.Threading.Tasks;
 
 namespace MyShop.Core.Models
 {
-    public class OffersModel : BaseEntity
+    public class OffersModel : BaseOffer //23 levels of depth in inheritance
     {
-        public Offers Offers { get; set; }
-    }
-
-    public enum Offers
-    {
-        Offer1,
-        Offer2
+        public string Name { get; set; }
+        public string Description { get; set; }
     }
 }
