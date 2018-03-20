@@ -308,7 +308,6 @@
     <Content Include="Views\Basket\BasketSummary.cshtml" />
     <Content Include="Views\ProductOffer\Index.cshtml" />
     <Content Include="Views\ProductOffer\Create.cshtml" />
-    <Content Include="Views\ProductOffer\Edit.cshtml" />
     <Content Include="Views\ProductOffer\Delete.cshtml" />
     <Content Include="Views\Offers\Index.cshtml" />
   </ItemGroup>
