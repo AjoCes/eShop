@@ -11,6 +11,9 @@ using System.IO;
 
 namespace MyShop.WebUI.Controllers
 {
+    //Controllers process incoming requests, 
+    //handle user input and interactions, and execute appropriate application logic
+
     public class ProductManagerController : Controller
     {
         IRepository<Product> context;
@@ -25,7 +28,16 @@ namespace MyShop.WebUI.Controllers
             productOffers = productOfferContext;
             offersModel = productOffersContext;
         }
+
         // GET: ProductManager
+        /*In ASP.NET applications that do not use the MVC framework, 
+         * user interaction is organized around pages, and around raising and handling events
+         * from the page and from controls on the page. 
+         * In contrast, user interaction with ASP.NET MVC applications is organized around controllers 
+         * and action methods. The controller defines action methods. 
+         * Controllers can include as many action methods as needed.
+         */
+
         public ActionResult Index()
         {
             List<Product> products = context.Collection().ToList();
@@ -86,6 +98,11 @@ namespace MyShop.WebUI.Controllers
         public ActionResult Edit(Product product, string Id, HttpPostedFileBase file) {
             Product productToEdit = context.Find(Id);
 
+            if(String.IsNullOrEmpty(product.Description))
+            {
+                return HttpNotFound();
+            }
+
             if (productToEdit == null)
             {
                 return HttpNotFound();
@@ -145,3 +162,4 @@ namespace MyShop.WebUI.Controllers
         }
     }
 }
+ 

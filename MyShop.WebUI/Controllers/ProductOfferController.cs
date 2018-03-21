@@ -81,37 +81,6 @@ namespace MyShop.WebUI.Controllers
                 return View(productOffer);
             }
         }
-        [HttpPost]
-        public ActionResult Edit(ProductOffer offer, string Id)
-        {
-            if (string.IsNullOrEmpty(offer.Offer))
-            {
-                ModelState.AddModelError("Offer", "Offer field is required");
-            }
-
-            //Load the id offer which will be edited 
-            ProductOffer productOfferToEdit = context.Find(Id);         
-
-            if (productOfferToEdit == null)
-            {
-
-                return HttpNotFound();
-            }
-            else
-            {
-                if (!ModelState.IsValid)
-                {
-
-                    return View(offer);
-                }
-
-                productOfferToEdit.Offer = offer.Offer;
-
-                context.Commit();
-
-                return RedirectToAction("Index");
-            }
-        }
 
         public ActionResult Delete(string Id)
         {
