@@ -9,7 +9,8 @@ namespace MyShop.WebUI.Controllers
 {
     public class BasketController : Controller
     {
-        IBasketService basketService;
+        IBasketService basketService; // we use interface to have different implementation of basket services
+
 
         public BasketController(IBasketService BasketService) {
             this.basketService = BasketService;

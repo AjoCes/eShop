@@ -7,7 +7,11 @@ using System.Threading.Tasks;
 
 namespace MyShop.Core.Models
 {
-    public abstract class BaseOffer : BaseEntity   {
+    public abstract class BaseOffer : BaseEntity 
+   
+    // we can never create instance for an abstract class we can only create classes that implements it 
+
+    {
         public Offers Offers { get; set; }
 
     }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MyShop.Core.Models
 {
-    public abstract class BaseEntity
+    public abstract class BaseEntity // we can never create instance for an abstract class we can only create classes that implements it 
     {
         public string Id { get; set; }
         public DateTimeOffset CreatedAt { get; set; }

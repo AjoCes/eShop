@@ -10,30 +10,48 @@ using System.Web;
 
 namespace MyShop.Services
 {
+    // We could all this class include within Basket Controller
+    //but since controller is for conjuction between UI and the 
+    //Model we use this layer to encasulate The business logic
+
+    // Try to read a cookie from the user with HTTPContext that contains info such as IP Adress
+
     public class BasketService : IBasketService
     {
+        //getting acces to underlined data
         IRepository<Product> productContext;
-        IRepository<Basket> basketContext;
+        IRepository<Basket> basketContext;//load basket and basketItems
 
-        public const string BasketSessionName = "eCommerceBasket";
+        public const string BasketSessionName = "eCommerceBasket"; //use string to reference a cookie
 
         public BasketService(IRepository<Product> ProductContext, IRepository<Basket> BasketContext) {
             this.basketContext = BasketContext;
             this.productContext = ProductContext;
         }
 
+        //Private method because we only will use id internally within BasketSevice Class
+
         private Basket GetBasket(HttpContextBase httpContext, bool createIfNull) {
+            //Attempt to read the cookie
             HttpCookie cookie = httpContext.Request.Cookies.Get(BasketSessionName);
 
+            //create new basket
             Basket basket = new Basket();
+
+            //Check if the cookie actualy exists, if the users has visited before, 
+            //method will read that cookie, if not, cookie will simply be null 
 
             if (cookie != null)
             {
                 string basketId = cookie.Value;
+                //further check if the value red from the cookie is not null
+
                 if (!string.IsNullOrEmpty(basketId))
                 {
+                    //load from the basketContext
                     basket = basketContext.Find(basketId);
                 }
+                // If basket is null
                 else
                 {
                     if (createIfNull)
@@ -42,6 +60,7 @@ namespace MyShop.Services
                     }
                 }
             }
+            //if cookie is null
             else {
                 if (createIfNull)
                 {
@@ -54,26 +73,44 @@ namespace MyShop.Services
         }
 
         private Basket CreateNewBasket(HttpContextBase httpContext) {
+            
+            //create new basket
             Basket basket = new Basket();
+
+            //insert to the database
             basketContext.Insert(basket);
             basketContext.Commit();
 
+            //Write a cookie to the users machine 
+
+            //Create a cookie first
+
             HttpCookie cookie = new HttpCookie(BasketSessionName);
             cookie.Value = basket.Id;
+
+            //set expiration of the cookie 
             cookie.Expires = DateTime.Now.AddDays(1);
+
+            //send cookie back to the user
             httpContext.Response.Cookies.Add(cookie);
+
 
             return basket;
         }
 
+        //Method where we actually want to add a basket Item
         public void AddToBasket(HttpContextBase httpContext, string productId) {
             Basket basket = GetBasket(httpContext, true);
             BasketItem item = basket.BasketItems.FirstOrDefault(i => i.ProductId == productId);
 
+            //Does that item exits in the basket?
+
             if (item == null)
             {
+                //create new item
                 item = new BasketItem()
                 {
+                    
                     BasketId = basket.Id,
                     ProductId = productId,
                     Quanity = 1
@@ -99,7 +136,12 @@ namespace MyShop.Services
         }
 
         public List<BasketItemViewModel> GetBasketItems(HttpContextBase httpContext) {
+
+            //instead of this id there is no items in basket we just return an empty inMemory basket 
+
             Basket basket = GetBasket(httpContext, false);
+
+            //Query a product table if we retreive the basket
 
             if (basket != null)
             {
