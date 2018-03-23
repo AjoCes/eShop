@@ -310,6 +310,8 @@
     <Content Include="Views\ProductOffer\Create.cshtml" />
     <Content Include="Views\ProductOffer\Delete.cshtml" />
     <Content Include="Views\Offers\Index.cshtml" />
+    <Content Include="Views\Offers\IndexPrenium.cshtml" />
+    <Content Include="Views\Offers\IndexNormal.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

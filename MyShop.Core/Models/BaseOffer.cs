@@ -18,9 +18,8 @@ namespace MyShop.Core.Models
 
     public enum Offers
     {
-        Offer1,
-        Offer2,
-        Offer3,
-        Offer4
-    }
+        Normal,
+        Pernium
+     }
+
 }

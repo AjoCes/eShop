@@ -6,9 +6,11 @@ using System.Threading.Tasks;
 
 namespace MyShop.Core.Models
 {
-    public class OffersModel : BaseOffer //23 levels of depth in inheritance
+    public class OffersModel : BaseOffer //3 levels of depth in inheritance
     {
         public string Name { get; set; }
         public string Description { get; set; }
     }
+
+
 }

@@ -25,18 +25,65 @@ namespace MyShop.WebUI.Controllers
         }
 
         // GET: Offers
-        public ActionResult Index()
+        public virtual ActionResult Index()
         {
             return View();
         }
 
-        
-        public ActionResult LoadOffer() {
-            return Content("LoadOffer");
+    }
+
+    public class PreniumClientOffer : OffersController {
+
+        BaseOffer baseoffer;
+
+        public PreniumClientOffer(BaseOffer baseOffer) {
+
+            this.baseoffer = baseOffer;
         }
-        [ActionName("LoadOffersByName")]
-        public ActionResult LoadOffer(string str) {
-            return Content("LoadOffer with string");
+
+        public override ActionResult Index()
+        {
+            if (baseoffer.Equals(2))
+            {
+                return PartialView("IndexPrenium");
+            }
+            return View();
+        }
+
+    }
+
+
+    public class NormalClientOffer : OffersController
+    {
+
+        BaseOffer baseoffer;
+
+        public NormalClientOffer(BaseOffer baseOffer)
+        {
+
+            this.baseoffer = baseOffer;
+        }
+
+        public override ActionResult Index()
+        {
+            if (baseoffer.Equals(1))
+            {
+                return PartialView("IndexNormal");
+            }
+            return View();
+        }
+
+    }
+
+    public class Execute
+    {
+        //OffersController offersController;
+
+        public static void Main(OffersController offersController)
+        {
+
+            offersController.Index();
+
         }
     }
 }
