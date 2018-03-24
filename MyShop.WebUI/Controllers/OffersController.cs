@@ -32,11 +32,13 @@ namespace MyShop.WebUI.Controllers
 
     }
 
-    public class PreniumClientOffer : OffersController {
+    public class PreniumClientOffer : OffersController
+    {
 
         BaseOffer baseoffer;
 
-        public PreniumClientOffer(BaseOffer baseOffer) {
+        public PreniumClientOffer(BaseOffer baseOffer)
+        {
 
             this.baseoffer = baseOffer;
         }
