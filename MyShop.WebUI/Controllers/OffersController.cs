@@ -33,18 +33,20 @@ namespace MyShop.WebUI.Controllers
         public virtual ActionResult OffersButton() {          
                 Execute execute = new Execute();
                 NormalClientOffer normalClientOffer = new NormalClientOffer();
-                PreniumClientOffer preniumClientOffer = new PreniumClientOffer();          
-        //    if (offers.Equals("Normal"))
-        //    {
+                PreniumClientOffer preniumClientOffer = new PreniumClientOffer();
+                Offers offer = new Offers();
+            if (offer.Equals("Normal"))
+            {
              return execute.viewCaller(normalClientOffer);
-         //   }
-        //    else {
-        //     return execute.viewCaller(preniumClientOffer);
-         //   }         
-           // return execute.viewCaller(normalClientOffer); ;
+            }
+            else {
+             return execute.viewCaller(preniumClientOffer);
+            }         
+           // return execute.viewCaller(normalClientOffer); 
             
         }
 
+        
     }
 
     public class PreniumClientOffer : OffersController {

@@ -67,10 +67,25 @@ namespace MyShop.DataAccess.InMemory
                 items.Remove(tToDelete);
             }
             else
-            {
-                throw new Exception(className + " Not found");
+            {              
+                throw new NotFoundException(className);
             }
         }
 
     }
+    public class NotFoundException : Exception
+    {
+        public NotFoundException()
+        {
+
+        }
+
+        public NotFoundException(string name)
+            : base(String.Format("Requested item not found: notFoundException", name))
+        {
+
+        }
+
+    }
+
 }
