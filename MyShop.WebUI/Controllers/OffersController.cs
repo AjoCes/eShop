@@ -32,24 +32,19 @@ namespace MyShop.WebUI.Controllers
 
     }
 
-    public class PreniumClientOffer : OffersController
-    {
+    public class PreniumClientOffer : OffersController {
 
         BaseOffer baseoffer;
 
-        public PreniumClientOffer(BaseOffer baseOffer)
-        {
+        public PreniumClientOffer(BaseOffer baseOffer) {
 
             this.baseoffer = baseOffer;
         }
 
         public override ActionResult Index()
-        {
-            if (baseoffer.Equals(2))
-            {
-                return PartialView("IndexPrenium");
-            }
-            return View();
+        {         
+            return PartialView("IndexPrenium");
+
         }
 
     }
@@ -58,21 +53,14 @@ namespace MyShop.WebUI.Controllers
     public class NormalClientOffer : OffersController
     {
 
-        BaseOffer baseoffer;
-
-        public NormalClientOffer(BaseOffer baseOffer)
-        {
-
-            this.baseoffer = baseOffer;
+        public NormalClientOffer(){
+            
         }
 
         public override ActionResult Index()
-        {
-            if (baseoffer.Equals(1))
-            {
-                return PartialView("IndexNormal");
-            }
-            return View();
+        { 
+            return PartialView("IndexNormal");
+           
         }
 
     }
@@ -81,11 +69,8 @@ namespace MyShop.WebUI.Controllers
     {
         //OffersController offersController;
 
-        public static void Main(OffersController offersController)
-        {
-
-            offersController.Index();
-
+        public ActionResult viewCaller(OffersController offersController) {
+            return offersController.Index();
         }
     }
 }

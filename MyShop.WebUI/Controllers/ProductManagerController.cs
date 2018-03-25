@@ -136,7 +136,8 @@ namespace MyShop.WebUI.Controllers
 
             if (productToDelete == null)
             {
-                return HttpNotFound();
+                throw new NotFoundException("requested item");
+                //return HttpNotFound();
             }
             else
             {

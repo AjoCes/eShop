@@ -1,5 +1,6 @@
 ﻿@model MyShop.Core.Models.OffersModel
 
+
 @{
     ViewBag.Title = "Index";
 }
@@ -25,9 +26,8 @@
     </div>
 
     <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            
-            <input type="submit" value="See Offer" class="btn btn-default" />
+        <div class="col-md-offset-2 col-md-10">           
+            @Html.ActionLink("See offer", "OffersButton")
         </div>
 </div>
     </div>
