@@ -18,6 +18,7 @@ namespace MyShop.Core.Models
 
     public enum Offers
     {
+        
         Normal,
         Pernium
      }

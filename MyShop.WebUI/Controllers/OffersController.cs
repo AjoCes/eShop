@@ -30,19 +30,36 @@ namespace MyShop.WebUI.Controllers
             return View();
         }
 
+        public virtual ActionResult OffersButton()
+        {
+            Execute execute = new Execute();
+            NormalClientOffer normalClientOffer = new NormalClientOffer();
+            PreniumClientOffer preniumClientOffer = new PreniumClientOffer();
+            Offers offer = new Offers();
+            if (offer==Offers.Normal)
+            {
+                return execute.viewCaller(normalClientOffer);
+            }
+            else
+            {
+                return execute.viewCaller(preniumClientOffer);
+            }
+            
+        }
+
+
     }
 
-    public class PreniumClientOffer : OffersController {
+    public class PreniumClientOffer : OffersController
+    {
 
-        BaseOffer baseoffer;
+        public PreniumClientOffer()
+        {
 
-        public PreniumClientOffer(BaseOffer baseOffer) {
-
-            this.baseoffer = baseOffer;
         }
 
         public override ActionResult Index()
-        {         
+        {
             return PartialView("IndexPrenium");
 
         }
@@ -53,14 +70,15 @@ namespace MyShop.WebUI.Controllers
     public class NormalClientOffer : OffersController
     {
 
-        public NormalClientOffer(){
-            
+        public NormalClientOffer()
+        {
+
         }
 
         public override ActionResult Index()
-        { 
+        {
             return PartialView("IndexNormal");
-           
+
         }
 
     }
@@ -68,8 +86,9 @@ namespace MyShop.WebUI.Controllers
     public class Execute
     {
         //OffersController offersController;
-
-        public ActionResult viewCaller(OffersController offersController) {
+        //Dynamic Polimorphism
+        public ActionResult viewCaller(OffersController offersController)
+        {
             return offersController.Index();
         }
     }
